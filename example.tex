@@ -1,4 +1,4 @@
-\documentclass[a3paper, ngerman]{uulm-cs-poster}
+\documentclass[a3paper, protrait, ngerman]{uulm-cs-poster}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -10,94 +10,9 @@
 \title{Algorithmic Detection of Source Code}
 \author{Denis Neumüller, Florian Sihler}
 \date{21. Juli, 2022}
+\logo{XXX}
 
 \begin{document}
 \maketitle
-\begin{columns}
-\column{1}
-\begin{subcolumns}
-      %%%%%%%%%%%% COLONNE 1 %%%%%%%%%%%%%
-      \subcolumn{.33}
-
-      % ---------------------------------MOTIVATIONS ----------
-         \block{\textsc{Motivations}}{\lipsum[1]}
-
-
-      % --------------------------------- PARTIE1----------
-         \block{\textsc{Partie 1}}{\begin{itemize}
-            \item item 1
-            \item item 2
-            \item item 3
-         \end{itemize}
-
-         \vspace{0.5cm}
-
-         \underline{liste 2}: \begin{itemize}[label=-]
-            \item item;
-            \item item;
-            \item item;
-            \item item;
-         \end{itemize} \vspace{-2cm}}
-
-      % --------------------------------- PARTIE 2  ----------
-      \block{\textsc{Partie 2}}{
-
-         \tikzstyle{na}=[baseline=-.25ex]
-         \tikzstyle{every picture}+=[remember picture]
-         \vspace{0.5cm}
-
-         \innerblock{Avec titre}{x}
-         \vspace{0.5cm}
-         \lipsum[1]
-
-            \vspace{-2cm}}
-
-      %%%%%%%%%%%%%%% COLONNE 2 %%%%%%%%%%%%%
-      \subcolumn{.33}
-
-         % ---------------------------------  PARTIE 3----------
-         \block{\textsc{Partie 3}}{\innerblock{}{x} \lipsum[2]
-         \vspace{-2cm}}
-
-         \note[targetoffsetx = 3cm, targetoffsety = 1cm, angle = 20, connection]{\textbf{exemple de note}}
-
-
-      % --------------------------------- PARTIE 4  ----------
-         \block{\textsc{Partie 4}}{ \lipsum[3]
-         \vspace{-2cm}}
-
-
-   % ------------------------------------ PARTIE 5------------
-         \block{\textsc{Partie 5}}{\lipsum[1]
-
-            \vspace{-2cm}}
-
-
-   %%%%%%%%%%%%%%%%%%%%%%%% COLONNE 3 %%%%%%%%%%%%%%%%%%%%%%%%%
-      \subcolumn{.33}
-
-      % ---------------------------------------------
-         \block{\textsc{Conclusion}}{
-         \lipsum[1]
-
-         \vspace{0.5cm}
-         \lipsum[2] \cite{ref1}
-         \vspace{0.5cm}}
-
-      % ----------------------------------------------
-         \block{}{
-         \vspace{3cm}
-            \textbf{SPA}: Société Protectrice des Animaux $\bullet$
-            \textbf{CAF}: Caisse d'Allocations Familiales $\bullet$
-            \textbf{WER}: Word Error Rate }
-
-      \end{subcolumns}
-
-
-      % ---------------------------------  BIBLIO ----------
-      \block{}{\vspace{1cm}
-         % \printbibliography
-         }
-         \end{columns}
-
+\lipsum
 \end{document}

@@ -1,8 +1,11 @@
 \ProvidesClass{uulm-cs-poster}[2022/07/19 ]
 
-\LoadClass[25pt, margin=0mm, innermargin=15mm, blockverticalspace=15mm, colspace=15mm, subcolspace=8mm]{tikzposter}
-\tikzposterlatexaffectionproofoff
+\LoadClass[oneside]{article}
+\newdimen\uulm@margin \uulm@margin2cm
+\RequirePackage[margin=\uulm@margin]{geometry} % wellp
+\RequirePackage{parskip}
 
+\RequirePackage{tikz}
 \RequirePackage{uulm-logo}
 \RequirePackage{microtype}
 
@@ -19,20 +22,22 @@
 
 \colorlet{backgroundcolor}{white}
 
-\usetheme{Simple}
-\settitle{\minipage[b]{.8\linewidth}
-\vspace*{2cm}
-\hspace{2cm}\color{white}{ \Huge\textsc{\textbf{\@title}} \par }
-\hspace{2cm}\color{white}{\LARGE \@author \par}%
-\vspace*{2cm}
-\endminipage}
+\def\logo#1{\def\@logo{#1}}
+\let\@logo\@empty
+% TODO: SP logo
+\def\maketitle{\begingroup\leavevmode
+\parskip\z@\relax
+% upper row of icons
+\null\parbox[c]{.2\linewidth}{\@logo  }\hfill\uulmlogo\vskip.75\uulm@margin\par
+\hspace{-\uulm@margin}%
+\fboxsep\z@\fcolorbox{red}{red}{
+\minipage[b]\paperwidth
+\vspace*{.5cm}%
+\hspace\uulm@margin\color{white}{\fontsize{36pt}{36pt}\textsc{\textbf{\@title}}\par}%
+\hspace\uulm@margin\color{white}{\LARGE \@author \par}%
+\vspace*{.5cm}%
+\endminipage}\vskip1cm\par\endgroup}
 
-\definetitlestyle{uulm-title}{width=\paperwidth, linewidth=2pt, innersep=15pt,titletotopverticalspace=0mm,titletoblockverticalspace=10mm
-}{\scope
-\path[fill,draw,red] (\titleposleft,\titleposbottom) rectangle (\titleposright,\titlepostop);
-\endscope}
-
-\usetitlestyle[]{uulm-title}
-\setlength{\columnseprule}{0.4pt}
+\columnseprule=.4pt
 
 \endinput
