@@ -51,6 +51,7 @@
 \def\columnseprulecolor{\color{gray}}
 
 % TODO: footline at the bottom
+% TODO: adapt style from matching document
 
 \pagestyle{empty}
 
