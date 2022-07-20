@@ -3,7 +3,14 @@
 \LoadClass[oneside]{article}
 \newdimen\uulm@margin \uulm@margin2cm
 \RequirePackage[margin=\uulm@margin]{geometry} % wellp
-\RequirePackage{parskip}
+
+\RequirePackage[skip=\baselineskip]{parskip}
+
+% TODO do not use parskpik; TODO: rect?
+% \parindent\z@
+% \parskip\baselineskip
+% \parfillskip.3\linewidth\@minus.3\linewidth % don't fill the last line
+% \emergencystretch.5\textwidth
 
 \RequirePackage{tikz}
 \RequirePackage{uulm-logo}
@@ -18,7 +25,8 @@
 \definecolor{orange}{HTML}{DF6D07}
 \definecolor{blue}{HTML}{26547C}
 
-\usepackage[default]{FiraSans}
+\RequirePackage[default]{FiraSans}
+\RequirePackage{multicol}
 
 \colorlet{backgroundcolor}{white}
 
@@ -38,6 +46,12 @@
 \vspace*{.5cm}%
 \endminipage}\vskip1cm\par\endgroup}
 
-\columnseprule=.4pt
+\columnseprule.4pt
+\columnsep3em
+\def\columnseprulecolor{\color{gray}}
+
+% TODO: footline at the bottom
+
+\pagestyle{empty}
 
 \endinput
