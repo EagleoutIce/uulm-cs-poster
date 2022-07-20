@@ -74,6 +74,10 @@
   {\thesection}{1em}{}[\color{uulmaccent}\belowsecrule]
 \pagestyle{empty}
 
+\RequirePackage{caption}
+\DeclareCaptionFont{main}{\color{red}}
+\captionsetup{labelfont={main,bf}}
+
 \linespread{1.1}
 
 \endinput
