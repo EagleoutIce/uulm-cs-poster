@@ -76,7 +76,7 @@
 
 \RequirePackage{caption}
 \DeclareCaptionFont{main}{\color{red}}
-\captionsetup{labelfont={main,bf}}
+\captionsetup{labelfont={main,bf},font={small}}
 
 \linespread{1.1}
 
