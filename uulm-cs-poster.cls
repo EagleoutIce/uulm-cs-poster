@@ -26,7 +26,7 @@
 \definecolor{blue}{HTML}{26547C}
 
 \RequirePackage[default]{FiraSans}
-\RequirePackage{multicol}
+\RequirePackage[grid]{multicol}
 
 \colorlet{backgroundcolor}{white}
 
