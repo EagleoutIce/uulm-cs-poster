@@ -72,6 +72,9 @@
 \titleformat{\section}
   {\centering\normalfont\bfseries\Large\color{red}}
   {\thesection}{1em}{}[\color{uulmaccent}\belowsecrule]
+\titleformat{\subsection}
+  {\normalfont\bfseries\normalsize\color{red}}
+  {\thesection}{1em}{}%[\color{uulmaccent}\belowsecrule]
 \pagestyle{empty}
 
 \RequirePackage{caption}
