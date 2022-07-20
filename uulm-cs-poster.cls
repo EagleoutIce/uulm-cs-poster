@@ -56,12 +56,15 @@
 % TODO: footline at the bottom
 % TODO: adapt style from matching document
 
+\def\university#1{\def\@university{#1}}
+\let\@university\@empty
+
 \def\footline#1{\def\@footline{#1}}
-\let\@footline\@empty % \smash{?
+\def\@footline{\@date\hfill\@institute\hfill\@university}
 
 \def\@thefoot{%
 \hskip-\uulm@margin\relax% \vskip\uulm@margin\relax
-\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline}}%
+\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth\relax{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline\hskip\dimexpr\uulm@margin+.6ex\relax\null}}%
 }
 
 \RequirePackage{titlesec}
