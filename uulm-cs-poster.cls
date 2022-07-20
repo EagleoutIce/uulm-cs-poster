@@ -4,7 +4,7 @@
 \newdimen\uulm@margin \uulm@margin2cm
 \RequirePackage[margin=\uulm@margin]{geometry} % wellp
 
-\RequirePackage[skip=\baselineskip]{parskip}
+\RequirePackage[skip=.5\baselineskip]{parskip}
 
 % TODO do not use parskpik; TODO: rect?
 % \parindent\z@
