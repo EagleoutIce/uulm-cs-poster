@@ -1,4 +1,4 @@
-\ProvidesClass{uulm-cs-poster}[2022/07/19 ]
+\ProvidesClass{uulm-cs-poster}[2022/07/19 non-official LaTeX poster done roughly in the design of the uulm]
 
 \LoadClass[oneside]{article}
 \newdimen\uulm@margin \uulm@margin2cm
