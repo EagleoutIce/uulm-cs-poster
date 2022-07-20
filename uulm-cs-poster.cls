@@ -48,7 +48,7 @@
 
 \columnseprule.4pt
 \columnsep3em
-\def\columnseprulecolor{\color{gray}}
+\def\columnseprulecolor{\color{uulmaccent}}
 
 % TODO: footline at the bottom
 % TODO: adapt style from matching document
@@ -61,6 +61,11 @@
 \fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline}}%
 }
 
+\RequirePackage{titlesec}
+\def\belowsecrule{\titlerule[\columnseprule]}
+\titleformat{\section}
+  {\centering\normalfont\bfseries\Large\color{red}}
+  {\thesection}{1em}{}[\color{uulmaccent}\belowsecrule]
 \pagestyle{empty}
 
 \linespread{1.1}
