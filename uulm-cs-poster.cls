@@ -32,6 +32,9 @@
 
 \def\logo#1{\def\@logo{#1}}
 \let\@logo\@empty
+\def\institute#1{\def\@institute{#1}}
+\let\@institute\@empty
+
 % TODO: SP logo
 \def\maketitle{\begingroup\leavevmode
 \parskip\z@\relax
