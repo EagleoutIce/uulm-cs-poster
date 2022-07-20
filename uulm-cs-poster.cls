@@ -40,9 +40,9 @@
 \hspace{-\uulm@margin}%
 \fboxsep\z@\fcolorbox{red}{red}{
 \minipage[b]\paperwidth
-\vspace*{.5cm}%
-\hspace\uulm@margin\color{white}{\fontsize{36pt}{36pt}\textsc{\textbf{\@title}}\par}%
-\hspace\uulm@margin\color{white}{\LARGE \@author \par}%
+\vspace*{.5cm}\@declaredcolor{white}%
+\hspace\uulm@margin\fontsize{36pt}{36pt}\textsc{\textbf{\@title}}\par%
+\hspace\uulm@margin\LARGE\@author\par%
 \vspace*{.5cm}%
 \endminipage}\vskip1cm\par\endgroup}
 
@@ -52,6 +52,14 @@
 
 % TODO: footline at the bottom
 % TODO: adapt style from matching document
+
+\def\footline#1{\def\@footline{#1}}
+\let\@footline\@empty % \smash{?
+
+\def\@thefoot{%
+\hskip-\uulm@margin\relax% \vskip\uulm@margin\relax
+\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline}}%
+}
 
 \pagestyle{empty}
 
