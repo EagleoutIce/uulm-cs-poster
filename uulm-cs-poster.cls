@@ -63,4 +63,6 @@
 
 \pagestyle{empty}
 
+\linespread{1.1}
+
 \endinput
