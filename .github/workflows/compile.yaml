@@ -1,0 +1,40 @@
+name: Compile Poster
+'on':
+  push:
+    branches: [ master, main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout git repository
+      uses: actions/checkout@v2
+      with:
+        lfs: true
+        submodules: true
+    - name: Setup Python environment for sltx
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+    - name: Setup pu
+      run: |
+        sudo apt install poppler-utils
+    - name: 'Compile the document'
+      uses: 'xu-cheng/texlive-action/full@v1'
+      with:
+        run: |
+          latexmk
+          pdftoppm -png -f 1 -l 1 ./example.pdf preview
+
+    - name: Commit
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -f "example.pdf" "preview-1.png"
+        git commit -m "Newly compiled data"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
