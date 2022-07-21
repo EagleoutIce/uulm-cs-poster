@@ -1,22 +1,29 @@
 \ProvidesClass{uulm-cs-poster}[2022/07/19 non-official LaTeX poster done roughly in the design of the uulm]
 
-\newif\if@uulm@cs@poster@hyper@ \@uulm@cs@poster@hyper@true
+\newif\if@uulm@cs@poster@hyper@
 \DeclareOption{hyper}{\@uulm@cs@poster@hyper@true}
 \DeclareOption{nohyper}{\@uulm@cs@poster@hyper@false}
 
-\newif\if@uulm@cs@poster@enumitem@ \@uulm@cs@poster@enumitem@true
+\newif\if@uulm@cs@poster@enumitem@
 \DeclareOption{enumitem}{\@uulm@cs@poster@enumitem@true}
 \DeclareOption{noenumitem}{\@uulm@cs@poster@enumitem@false}
 
-\newif\if@uulm@cs@poster@biblatex@ \@uulm@cs@poster@biblatex@true
+\newif\if@uulm@cs@poster@biblatex@
 \DeclareOption{biblatex}{\@uulm@cs@poster@biblatex@true}
 \DeclareOption{nobiblatex}{\@uulm@cs@poster@biblatex@false}
 
 \newif\if@uulm@cs@poster@default@
 \DeclareOption{default}{\@uulm@cs@poster@default@true}
 \DeclareOption{nodefault}{\@uulm@cs@poster@default@false}
+
+\DeclareOption{english}{\def\uulm@cs@poster@defaultlang{english}}
+\DeclareOption{ngerman}{\def\uulm@cs@poster@defaultlang{ngerman}}
+
+\ExecuteOptions{hyper,enumitem,biblatex,english}
 \ProcessOptions*
 
+% ensure presence of language
+\PassOptionsToPackage{\uulm@cs@poster@defaultlang}{babel}
 
 \LoadClass[oneside]{article}
 \newdimen\uulm@margin \uulm@margin2cm
@@ -25,7 +32,6 @@
 \RequirePackage[skip=.5\baselineskip]{parskip}
 
 \RequirePackage{uulm-logo}
-\RequirePackage{microtype}
 
 \definecolor{black}{HTML}{000000}
 \definecolor{uulmlogoblue}{HTML}{89a2b3}
@@ -148,6 +154,10 @@
   \RequirePackage[T1]{fontenc}
   \RequirePackage[utf8]{inputenc}
   \RequirePackage{babel}
+
+  \PassOptionsToPackage{activate={true,nocompatibility},tracking,expansion,final,babel}{microtype}
+  % we want no tracking for the title
+  \AtEndPreamble{\preto\@title{\microtypesetup{tracking=false}}}
 \fi
 
 \if@uulm@cs@poster@biblatex@
@@ -179,5 +189,8 @@
     \preto\printbibliography{\hypersetup{allcolors=black}}
   \fi
 \fi
+
+
+\RequirePackage{microtype}
 
 \endinput
