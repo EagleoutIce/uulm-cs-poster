@@ -100,9 +100,11 @@
 
 \if@uulm@cs@poster@hyper@
   \AtEndPreamble{%
-    \RequirePackage[pdfusetitle]{hyperref}%
+    \PassOptionsToPackage{pdfusetitle}{hyperref}%
+    \RequirePackage{hyperref}%
     \hypersetup{pdfborder=0 0 0,colorlinks=true,allcolors=uulmaccent}%
-    \RequirePackage[capitalise]{cleveref}%
+    \PassOptionsToPackage{capitalise}{cleveref}%
+    \RequirePackage{cleveref}%
   }
 \fi
 \endinput
