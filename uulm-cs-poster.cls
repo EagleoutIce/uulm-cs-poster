@@ -69,7 +69,7 @@
 \titleformat\section[hang]
   {\centering\normalfont\bfseries\Large\color{red}}
   {\thesection}{1em}{}[\color{uulmaccent}\belowsecrule]
-\titlespacing*\section\z@{*3}{*1}
+\titlespacing*\section\z@{2em\@plus1fil\@minus1em}{*1}
 
 \titleformat\subsection
   {\normalfont\bfseries\normalsize\color{red}}
