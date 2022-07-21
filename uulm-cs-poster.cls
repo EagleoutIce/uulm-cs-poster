@@ -6,13 +6,6 @@
 
 \RequirePackage[skip=.5\baselineskip]{parskip}
 
-% TODO do not use parskpik; TODO: rect?
-% \parindent\z@
-% \parskip\baselineskip
-% \parfillskip.3\linewidth\@minus.3\linewidth % don't fill the last line
-% \emergencystretch.5\textwidth
-
-\RequirePackage{tikz}
 \RequirePackage{uulm-logo}
 \RequirePackage{microtype}
 

@@ -42,7 +42,7 @@
 
 \newsavebox\ulo@sb@sp@logo \sbox\ulo@sb@sp@logo{%
 \begin{tikzpicture}[y=.80pt,x=.80pt,yscale=-1,inner sep=\z@,outer sep=\z@]
-\begin{scope}[yshift=135.98pt,xshift=83pt]
+\scope[yshift=135.98pt,xshift=83pt]
 \path[color=black,fill=ulo@col@uulm@sp@red,line join=miter,line cap=butt,miter
 limit=4.00,nonzero rule,line width=.368pt]
 (38.1124,61.1489)..controls(37.7344,61.1489) and (37.4231,61.4607)..
@@ -69,8 +69,8 @@ limit=4.00,nonzero rule,line width=.368pt] (39.1079,61.1489)--
 \path[color=black,fill=ulo@col@uulm@sp@lightgray,line join=miter,line cap=butt,miter
 limit=4.00,nonzero rule,line width=0.049pt] (41.2523,60.8420)--
 (41.2523,63.7574)--(41.3135,63.7574)--(41.3135,60.8420)--cycle;
-\end{scope}
-\begin{scope}[cm={{0.05789,0.0,0.0,0.05799,(141.44172,231.11382)}},fill=ulo@col@uulm@sp@darkgray]
+\endscope
+\scope[cm={{0.05789,0.0,0.0,0.05799,(141.44172,231.11382)}},fill=ulo@col@uulm@sp@darkgray]
 \path[fill=ulo@col@uulm@sp@darkgray] (83.9680,8.6198)..controls(82.2661,8.1306) and
 (81.0259,7.5312)..(80.2473,6.8215)..controls(79.4756,6.1049) and
 (79.0897,5.2229)..(79.0897,4.1756)..controls(79.0897,2.9905) and
@@ -336,8 +336,8 @@ cycle(237.0129,5.5089)..controls(236.2412,5.5089) and (235.5935,5.7914)..
 (274.2751,6.0946) and (273.3966,5.5606)..(272.2252,5.5606)..controls
 (271.2951,5.5606) and (270.5682,5.9223)..(270.0445,6.6458)..controls
 (269.5208,7.3692) and (269.2590,8.4407)..(269.2590,9.8600)--cycle;
-\end{scope}
-\begin{scope}[cm={{0.05789,0.0,0.0,0.05799,(141.44172,231.11382)}},fill=ulo@col@uulm@sp@darkgray]
+\endscope
+\scope[cm={{0.05789,0.0,0.0,0.05799,(141.44172,231.11382)}},fill=ulo@col@uulm@sp@darkgray]
 \path[fill=ulo@col@uulm@sp@darkgray] (81.5185,33.7964)--(81.5185,39.6875)--(79.5342,39.6875)
 -- (79.5342,24.6393)--(85.0842,24.6393)..controls(86.7310,24.6393) and
 (88.0194,25.0596)..(88.9496,25.9002)..controls(89.8867,26.7408) and
@@ -664,7 +664,7 @@ cycle(298.7766,29.8690)..controls(298.0049,29.8690) and (297.3572,30.1515)
 (309.6907,38.3336)..controls(310.4141,38.3336) and (310.9929,38.1889)..
 (311.4270,37.8995)..controls(311.8680,37.6032) and (312.0885,37.2105)..
 (312.0885,36.7213)--cycle;
-\end{scope}
+\endscope
 \end{tikzpicture}}
 
 \newcommand*\splogo{\scalebox{12.05}{\usebox{\ulo@sb@sp@logo}}}
