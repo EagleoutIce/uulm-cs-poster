@@ -7,6 +7,10 @@
 \newif\if@uulm@cs@poster@enumitem@ \@uulm@cs@poster@enumitem@true
 \DeclareOption{enumitem}{\@uulm@cs@poster@enumitem@true}
 \DeclareOption{noenumitem}{\@uulm@cs@poster@enumitem@false}
+
+\newif\if@uulm@cs@poster@default@
+\DeclareOption{default}{\@uulm@cs@poster@default@true}
+\DeclareOption{nodefault}{\@uulm@cs@poster@default@false}
 \ProcessOptions*
 
 
@@ -134,5 +138,11 @@
     leftmargin=*,%
     topsep=-\parskip%
 }
+\fi
+
+\if@uulm@cs@poster@default@
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage{babel}
 \fi
 \endinput
