@@ -8,6 +8,10 @@
 \DeclareOption{enumitem}{\@uulm@cs@poster@enumitem@true}
 \DeclareOption{noenumitem}{\@uulm@cs@poster@enumitem@false}
 
+\newif\if@uulm@cs@poster@biblatex@ \@uulm@cs@poster@biblatex@true
+\DeclareOption{biblatex}{\@uulm@cs@poster@biblatex@true}
+\DeclareOption{nobiblatex}{\@uulm@cs@poster@biblatex@false}
+
 \newif\if@uulm@cs@poster@default@
 \DeclareOption{default}{\@uulm@cs@poster@default@true}
 \DeclareOption{nodefault}{\@uulm@cs@poster@default@false}
@@ -145,4 +149,34 @@
   \RequirePackage[utf8]{inputenc}
   \RequirePackage{babel}
 \fi
+
+\if@uulm@cs@poster@biblatex@
+  \RequirePackage{csquotes}
+  \RequirePackage{biblatex}
+  \let\finentrypunct\@empty
+  \def\uulm@cs@poster@lhook#1{\href{\thefield{url}}{#1}}%
+  \DeclareBibliographyDriver{uulm@cs@poster@bibtheme}{%
+    \let\@tmp\@empty
+    \ifhyperref{\iffieldundef{url}{}{\let\@tmp\uulm@cs@poster@lhook}}\relax
+    \@tmp{\usebibmacro{bibindex}%
+    \usebibmacro{begentry}%
+    \usebibmacro{author/editor}%
+    \setunit{\labelnamepunct}\newblock
+    \usebibmacro{title}%
+    \newblock
+    \printtext{\space}% so it will be executed in sync
+    \mbox{\textcolor{gray}{\usebibmacro{date}}}%
+    \newblock
+    \usebibmacro{finentry}}%
+  }%
+  \@for\@type:={article,book,booklet,collection,inbook,incollection,inproceedings,manual,misc,online,patent,periodical,proceedings,report,thesis,unpublished,*}\do{\DeclareBibliographyAlias{\@type}{uulm@cs@poster@bibtheme}}%
+  \def\bibfont{\tiny}
+
+  \defbibheading{bibliography}[\bibname]{\subsection*{#1}\vspace*{-3pt}}
+
+  \if@uulm@cs@poster@hyper@
+    \preto\printbibliography{\hypersetup{allcolors=black}}
+  \fi
+\fi
+
 \endinput
