@@ -3,6 +3,10 @@
 \newif\if@uulm@cs@poster@hyper@ \@uulm@cs@poster@hyper@true
 \DeclareOption{hyper}{\@uulm@cs@poster@hyper@true}
 \DeclareOption{nohyper}{\@uulm@cs@poster@hyper@false}
+
+\newif\if@uulm@cs@poster@enumitem@ \@uulm@cs@poster@enumitem@true
+\DeclareOption{enumitem}{\@uulm@cs@poster@enumitem@true}
+\DeclareOption{noenumitem}{\@uulm@cs@poster@enumitem@false}
 \ProcessOptions*
 
 
@@ -106,5 +110,29 @@
     \PassOptionsToPackage{capitalise}{cleveref}%
     \RequirePackage{cleveref}%
   }
+\fi
+
+\if@uulm@cs@poster@enumitem@
+\PassOptionsToPackage{inline}{enumitem}
+\RequirePackage{enumitem}
+\RequirePackage{translations}
+\RequirePackage{amssymb}
+\DeclareTranslationFallback{t-and}{, and\space}
+\DeclareTranslation{English}{t-and}{, and\space}
+\DeclareTranslation{German}{t-and}{ und\space}
+\newlist{inlist}{enumerate*}{1}
+\setlist[inlist]{%
+  itemjoin={{, }},%
+  itemjoin*={{\GetTranslation{t-and}}},%
+  label=\roman*),%
+  mode=boxed%
+}
+\setlist[itemize,1]{%
+    label=\@declaredcolor{uulmaccent}%
+    \scalebox{.8}{$\blacksquare$},%
+    nosep,%
+    leftmargin=*,%
+    topsep=-\parskip%
+}
 \fi
 \endinput
