@@ -89,4 +89,7 @@
 
 \linespread{1.1}
 
+\def\sbseries{\fontseries{sb}\selectfont}
+\def\textsb#1{\ifmmode\nfss@text{\sbseries#1}\else\hmode@bgroup\text@command{#1}\sbseries \check@icl#1\check@icr\expandafter\egroup\fi}
+
 \endinput
