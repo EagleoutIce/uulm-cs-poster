@@ -1,5 +1,8 @@
 \ProvidesClass{uulm-cs-poster}[2022/07/19 non-official LaTeX poster done roughly in the design of the uulm]
 
+% first of all, we define some switches
+% they can be used to control, which packages to load and configure
+% automatically
 \newif\if@uulm@cs@poster@hyper@
 \DeclareOption{hyper}{\@uulm@cs@poster@hyper@true}
 \DeclareOption{nohyper}{\@uulm@cs@poster@hyper@false}
@@ -22,40 +25,54 @@
 \ExecuteOptions{hyper,enumitem,biblatex,english}
 \ProcessOptions*
 
+% loaded implicitly, but this is safer
+\RequirePackage{etoolbox}
+
 % ensure the presence of a language
 \PassOptionsToPackage{\uulm@cs@poster@defaultlang}{babel}
 
+% the first variant was based on article and i see no reason to change
+% that afterwards
 \LoadClass[oneside]{article}
+
+% it is a poster...
 \newdimen\uulm@margin \uulm@margin2cm
 \RequirePackage[margin=\uulm@margin]{geometry} % wellp
 
+% Who wants to have a parindent with the poster?
 \RequirePackage[skip=.5\baselineskip]{parskip}
 
-\RequirePackage{uulm-logo}
 
-\definecolor{black}{HTML}{000000}
-\definecolor{uulmlogoblue}{HTML}{89a2b3}
-\definecolor{uulmblue}{HTML}{7D9AAA}
+\RequirePackage{xcolor}
+% set official ulm university colors (style-guide)
+\definecolor{black}     {HTML}{000000}
+\definecolor{uulmmain}  {HTML}{89a2b3}
+\definecolor{uulmblue}  {HTML}{7D9AAA}
 \definecolor{uulmaccent}{HTML}{A9A28D}
-\definecolor{green}{HTML}{56AA1C}
-\definecolor{red}{HTML}{A32638}
-\definecolor{orange}{HTML}{DF6D07}
-\definecolor{blue}{HTML}{26547C}
+\definecolor{green}     {HTML}{56AA1C}
+\definecolor{red}       {HTML}{A32638}
+\definecolor{orange}    {HTML}{DF6D07}
+\definecolor{blue}      {HTML}{26547C}
 
+% who wants meta, let's use fira (GO, in the future?)!
 \RequirePackage[default]{FiraSans}
 \RequirePackage{FiraMono}
 \RequirePackage{sansmathfonts}
 
-\RequirePackage[grid]{multicol}
+% i find boldface to be too heavy sometimes, therefore:
+% lets have fun with semi-bold!
+\def\sbseries{\fontseries{sb}\selectfont}
+\def\textsb#1{\ifmmode\nfss@text{\sbseries#1}\else\hmode@bgroup\text@command{#1}\sbseries \check@icl#1\check@icr\expandafter\egroup\fi}
 
-\colorlet{backgroundcolor}{white}
+% additional registers
+\def\logo#1{\def\@logo{#1}} \let\@logo\@empty
+\def\institute#1{\def\@institute{#1}} \let\@institute\@empty
+\def\university#1{\def\@university{#1}} \let\@university\@empty
+\def\footline#1{\def\@footline{#1}} \def\@footline{\@date\hfill\@institute\hfill\@university}
 
-\def\logo#1{\def\@logo{#1}}
-\let\@logo\@empty
-\def\institute#1{\def\@institute{#1}}
-\let\@institute\@empty
+\def\and{,\space}% TODO: maybe more elaborate with automatic and?
 
-\def\and{,\space}% maybe more elaborate with automatic and?
+% a custom title for the world!
 \def\maketitle{\begingroup\leavevmode
 \parskip\z@\relax
 \vskip\dimexpr-\parskip-\baselineskip-11mm\relax\par
@@ -70,52 +87,37 @@
 \vspace*{.5cm}%
 \endminipage}\vskip1cm\par\endgroup}
 
-\columnseprule.4pt
-\columnsep3em
-\def\columnseprulecolor{\color{uulmaccent}}
-
-% TODO: footline at the bottom
-% TODO: adapt style from matching document
-
-\def\university#1{\def\@university{#1}}
-\let\@university\@empty
-
-\def\footline#1{\def\@footline{#1}}
-\def\@footline{\@date\hfill\@institute\hfill\@university}
-
+\pagestyle{empty}
+% hehe, low level footline inject
 \def\@thefoot{%
 \hskip-\uulm@margin\relax% \vskip\uulm@margin\relax
-\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth\relax{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline\hskip\dimexpr\uulm@margin+.6ex\relax\null}}%
+\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth\relax{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline\hskip\dimexpr\uulm@margin+.6ex\relax\null}}\relax
 }
 
+% styling of sections, subsections and paragraphs
 \RequirePackage{titlesec}
 \def\belowsecrule{\titlerule[\columnseprule]}
 \titleformat\section[hang]
-  {\centering\normalfont\bfseries\Large\color{red}}
-  {\thesection}{1em}{}[\color{uulmaccent}\belowsecrule]
+  {\centering\normalfont\bfseries\Large\@declaredcolor{red}}
+  {\thesection}{1em}{}[\@declaredcolor{uulmaccent}\belowsecrule]
 \titlespacing*\section\z@{2em\@plus1fil\@minus1em}{*1}
 
 \titleformat\subsection
-  {\normalfont\bfseries\normalsize\color{red}}
+  {\normalfont\bfseries\normalsize\@declaredcolor{red}}
   {\thesection}{1em}{}
 \titlespacing*\subsection\z@{*1.5}{*.33}
 
 \titleformat\paragraph[runin]
-  {\normalfont\bfseries\normalsize\color{red}}
+  {\normalfont\bfseries\normalsize\@declaredcolor{red}}
   {\thesection}{1em}{}
 \titlespacing*\paragraph\z@\parskip{1em\@plus.5em\@minus.5em}
 
-\pagestyle{empty}
-
+% captions :3
 \RequirePackage{caption}
-\DeclareCaptionFont{main}{\color{red}}
+\DeclareCaptionFont{main}{\@declaredcolor{red}}
 \captionsetup{labelfont={main,bf},font={small}}
 
-\linespread{1.1}
-
-\def\sbseries{\fontseries{sb}\selectfont}
-\def\textsb#1{\ifmmode\nfss@text{\sbseries#1}\else\hmode@bgroup\text@command{#1}\sbseries \check@icl#1\check@icr\expandafter\egroup\fi}
-
+% reacting on some toggles
 \if@uulm@cs@poster@hyper@
   \AtEndPreamble{%
     \PassOptionsToPackage{pdfusetitle}{hyperref}%
@@ -127,29 +129,31 @@
 \fi
 
 \if@uulm@cs@poster@enumitem@
-\PassOptionsToPackage{inline}{enumitem}
-\RequirePackage{enumitem}
-\RequirePackage{translations}
-\RequirePackage{amssymb}
-\DeclareTranslationFallback{t-and}{, and\space}
-\DeclareTranslation{English}{t-and}{, and\space}
-\DeclareTranslation{German}{t-and}{ und\space}
-\newlist{inlist}{enumerate*}{1}
-\setlist[inlist]{%
-  itemjoin={{, }},%
-  itemjoin*={{\GetTranslation{t-and}}},%
-  label=\roman*),%
-  mode=boxed%
-}
-\setlist[itemize,1]{%
-    label=\@declaredcolor{uulmaccent}%
-    \scalebox{.8}{$\blacksquare$},%
-    nosep,%
-    leftmargin=*,%
-    topsep=-\parskip%
-}
+  \PassOptionsToPackage{inline}{enumitem}
+  \RequirePackage{enumitem}
+  \RequirePackage{translations}
+  \RequirePackage{amssymb}
+  \DeclareTranslationFallback{t-and}{, and\space}
+  \DeclareTranslation{English}{t-and}{, and\space}
+  \DeclareTranslation{German}{t-and}{ und\space}
+  % i am a huge fan of inline lists :D
+  \newlist{inlist}{enumerate*}{1}
+  \setlist[inlist]{%
+    itemjoin={{, }},%
+    itemjoin*={{\GetTranslation{t-and}}},%
+    label=\roman*),%
+    mode=boxed%
+  }
+  \setlist[itemize,1]{%
+      label=\@declaredcolor{uulmaccent}%
+      \scalebox{.8}{$\blacksquare$},%
+      nosep,%
+      leftmargin=*,%
+      topsep=-\parskip%
+  }
 \fi
 
+% these defaults are arbitrary, and just what i like to use
 \if@uulm@cs@poster@default@
   \RequirePackage[T1]{fontenc}
   \RequirePackage[utf8]{inputenc}
@@ -166,6 +170,8 @@
   \RequirePackage{babel}
   \let\finentrypunct\@empty
   \def\uulm@cs@poster@lhook#1{\href{\thefield{url}}{#1}}%
+  % configuring a very short bibtex style,
+  % i am not really happy with it and might change the "look and feel"
   \DeclareBibliographyDriver{uulm@cs@poster@bibtheme}{%
     \let\@tmp\@empty
     \ifhyperref{\iffieldundef{url}{}{\let\@tmp\uulm@cs@poster@lhook}}\relax
@@ -180,17 +186,31 @@
     \newblock
     \usebibmacro{finentry}}%
   }%
+  % assign the style to everything
   \@for\@type:={article,book,booklet,collection,inbook,incollection,inproceedings,manual,misc,online,patent,periodical,proceedings,report,thesis,unpublished,*}\do{\DeclareBibliographyAlias{\@type}{uulm@cs@poster@bibtheme}}%
   \def\bibfont{\tiny}
 
+  % hierarchically lower the bib heading and adapt spacing
   \defbibheading{bibliography}[\bibname]{\subsection*{#1}\vspace*{-1.5\p@}}
 
+  % guard so that the auto-links are not shown
   \if@uulm@cs@poster@hyper@
-    \preto\printbibliography{\hypersetup{allcolors=black}}
+    \preto\printbibliography{\hypersetup{allcolors=.}}
   \fi
 \fi
 
+% setting up multicol for multiple columns
+\RequirePackage[grid]{multicol}
+\columnseprule.4pt
+\columnsep3em
+\def\columnseprulecolor{\@declaredcolor{uulmaccent}}
 
+% every document needs microtype
 \RequirePackage{microtype}
+% i prefer a little bit more space on posters
+\linespread{1.1}
 
+% load the uulm and the sp logo using them this way has no direct advantage over
+% using pdfs but this way, it is included in a single file and no blob!
+\RequirePackage{uulm-logo}
 \endinput
