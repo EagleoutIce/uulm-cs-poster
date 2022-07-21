@@ -43,7 +43,7 @@
 \parskip\z@\relax
 \vskip\dimexpr-\parskip-\baselineskip-11mm\relax\par
 % upper row of icons
-\null\parbox[c]{.2\linewidth}{\@logo}\hfill\uulmlogo\vskip.75\uulm@margin\vskip-3.5mm\par
+\null\parbox[c]{.2\linewidth}{\smash{\@logo}}\hfill\uulmlogo\vskip.75\uulm@margin\vskip-3.5mm\par
 \hspace{-\uulm@margin}%
 \fboxsep\z@\fcolorbox{red}{red}{
 \minipage[b]\paperwidth
