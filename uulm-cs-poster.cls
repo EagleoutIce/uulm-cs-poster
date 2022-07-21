@@ -1,5 +1,11 @@
 \ProvidesClass{uulm-cs-poster}[2022/07/19 non-official LaTeX poster done roughly in the design of the uulm]
 
+\newif\if@uulm@cs@poster@hyper@ \@uulm@cs@poster@hyper@true
+\DeclareOption{hyper}{\@uulm@cs@poster@hyper@true}
+\DeclareOption{nohyper}{\@uulm@cs@poster@hyper@false}
+\ProcessOptions*
+
+
 \LoadClass[oneside]{article}
 \newdimen\uulm@margin \uulm@margin2cm
 \RequirePackage[margin=\uulm@margin]{geometry} % wellp
@@ -92,4 +98,11 @@
 \def\sbseries{\fontseries{sb}\selectfont}
 \def\textsb#1{\ifmmode\nfss@text{\sbseries#1}\else\hmode@bgroup\text@command{#1}\sbseries \check@icl#1\check@icr\expandafter\egroup\fi}
 
+\if@uulm@cs@poster@hyper@
+  \AtEndPreamble{%
+    \RequirePackage[pdfusetitle]{hyperref}%
+    \hypersetup{pdfborder=0 0 0,colorlinks=true,allcolors=uulmaccent}%
+    \RequirePackage[capitalise]{cleveref}%
+  }
+\fi
 \endinput
