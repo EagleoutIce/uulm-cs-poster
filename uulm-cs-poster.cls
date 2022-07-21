@@ -35,7 +35,7 @@
 \def\institute#1{\def\@institute{#1}}
 \let\@institute\@empty
 
-% TODO: SP logo
+\def\and{,\space}% maybe more elaborate with automatic and?
 \def\maketitle{\begingroup\leavevmode
 \parskip\z@\relax
 \vskip\dimexpr-\parskip-\baselineskip-11mm\relax\par
