@@ -24,7 +24,10 @@ jobs:
       with:
         run: |
           latexmk
-          pdftoppm -png -f 1 -l 1 ./example.pdf preview
+    - name: 'Generate preview'
+      run: |
+        cp build/example.pdf example.pdf
+        pdftoppm -png -f 1 -l 1 example.pdf preview
 
     - name: Commit
       run: |
