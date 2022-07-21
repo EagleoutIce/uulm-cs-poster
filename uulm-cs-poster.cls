@@ -153,6 +153,7 @@
 \if@uulm@cs@poster@biblatex@
   \RequirePackage{csquotes}
   \RequirePackage{biblatex}
+  \RequirePackage{babel}
   \let\finentrypunct\@empty
   \def\uulm@cs@poster@lhook#1{\href{\thefield{url}}{#1}}%
   \DeclareBibliographyDriver{uulm@cs@poster@bibtheme}{%
@@ -165,14 +166,14 @@
     \usebibmacro{title}%
     \newblock
     \printtext{\space}% so it will be executed in sync
-    \mbox{\textcolor{gray}{\usebibmacro{date}}}%
+    \mbox{\textcolor{uulmaccent}{\usebibmacro{date}}}%
     \newblock
     \usebibmacro{finentry}}%
   }%
   \@for\@type:={article,book,booklet,collection,inbook,incollection,inproceedings,manual,misc,online,patent,periodical,proceedings,report,thesis,unpublished,*}\do{\DeclareBibliographyAlias{\@type}{uulm@cs@poster@bibtheme}}%
   \def\bibfont{\tiny}
 
-  \defbibheading{bibliography}[\bibname]{\subsection*{#1}\vspace*{-3pt}}
+  \defbibheading{bibliography}[\bibname]{\subsection*{#1}\vspace*{-1.5\p@}}
 
   \if@uulm@cs@poster@hyper@
     \preto\printbibliography{\hypersetup{allcolors=black}}

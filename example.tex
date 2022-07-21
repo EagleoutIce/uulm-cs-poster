@@ -1,5 +1,5 @@
 \errorcontextlines9999
-\documentclass[a3paper, portrait, default]{uulm-cs-poster}
+\documentclass[a3paper, portrait, english, default]{uulm-cs-poster}
 
 \usepackage{lipsum}
 
@@ -9,6 +9,9 @@
 \university{Octarine University}
 \logo{\splogo}
 \date{\today}
+
+\addbibresource{references.bib}
+\nocite{*}
 
 \begin{document}
 \maketitle
@@ -34,7 +37,6 @@
 \section*{Horse with Hat Interview}
 \begin{multicols}{4}
    \lipsum[2]
-   \subsection*{I am a subsection}
-   abcd
+   \printbibliography
 \end{multicols}
 \end{document}
