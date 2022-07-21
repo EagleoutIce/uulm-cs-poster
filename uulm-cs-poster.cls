@@ -26,6 +26,9 @@
 \definecolor{blue}{HTML}{26547C}
 
 \RequirePackage[default]{FiraSans}
+\usepackage{FiraMono}
+\usepackage{sansmathfonts}
+
 \RequirePackage[grid]{multicol}
 
 \colorlet{backgroundcolor}{white}
@@ -40,7 +43,7 @@
 \parskip\z@\relax
 \vskip\dimexpr-\parskip-\baselineskip-11mm\relax\par
 % upper row of icons
-\null\parbox[c]{.2\linewidth}{\@logo  }\hfill\uulmlogo\vskip.75\uulm@margin\vskip-3.5mm\par
+\null\parbox[c]{.2\linewidth}{\@logo}\hfill\uulmlogo\vskip.75\uulm@margin\vskip-3.5mm\par
 \hspace{-\uulm@margin}%
 \fboxsep\z@\fcolorbox{red}{red}{
 \minipage[b]\paperwidth
