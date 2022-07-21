@@ -25,8 +25,8 @@
 \definecolor{blue}{HTML}{26547C}
 
 \RequirePackage[default]{FiraSans}
-\usepackage{FiraMono}
-\usepackage{sansmathfonts}
+\RequirePackage{FiraMono}
+\RequirePackage{sansmathfonts}
 
 \RequirePackage[grid]{multicol}
 
