@@ -1,4 +1,4 @@
-@default_files = ('example.tex');
+@default_files = ('example.tex', 'documentation.tex');
 $pdf_mode = 1;
 $pdf_update_method = 1;
 $out_dir = 'build';
