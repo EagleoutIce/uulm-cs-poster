@@ -22,7 +22,7 @@
 \ExecuteOptions{hyper,enumitem,biblatex,english}
 \ProcessOptions*
 
-% ensure presence of language
+% ensure the presence of a language
 \PassOptionsToPackage{\uulm@cs@poster@defaultlang}{babel}
 
 \LoadClass[oneside]{article}
