@@ -1,7 +1,7 @@
 \ProvidesClass{uulm-cs-poster}[2022/07/19 non-official LaTeX poster done roughly in the design of the uulm]
 
 % first of all, we define some switches
-% they can be used to control, which packages to load and configure
+% they control which packages to load and configure
 % automatically
 \newif\if@uulm@cs@poster@hyper@
 \DeclareOption{hyper}{\@uulm@cs@poster@hyper@true}
@@ -31,8 +31,8 @@
 % ensure the presence of a language
 \PassOptionsToPackage{\uulm@cs@poster@defaultlang}{babel}
 
-% the first variant was based on article and i see no reason to change
-% that afterwards
+% the first variant was based on article, and i see no reason to change
+% that afterward
 \LoadClass[oneside]{article}
 
 % it is a poster...
@@ -44,7 +44,7 @@
 
 
 \RequirePackage{xcolor}
-% set official ulm university colors (style-guide)
+% set official Ulm University colors (style-guide)
 \definecolor{black}     {HTML}{000000}
 \definecolor{uulmmain}  {HTML}{89a2b3}
 \definecolor{uulmblue}  {HTML}{7D9AAA}
@@ -54,12 +54,12 @@
 \definecolor{orange}    {HTML}{DF6D07}
 \definecolor{blue}      {HTML}{26547C}
 
-% who wants meta, let's use fira (GO, in the future?)!
+% who wants meta? Let's use Fira (GO, in the future?)!
 \RequirePackage[default]{FiraSans}
 \RequirePackage{FiraMono}
 \RequirePackage{sansmathfonts}
 
-% i find boldface to be too heavy sometimes, therefore:
+% I find boldface to be too heavy sometimes, therefore:
 % lets have fun with semi-bold!
 \def\sbseries{\fontseries{sb}\selectfont}
 \def\textsb#1{\ifmmode\nfss@text{\sbseries#1}\else\hmode@bgroup\text@command{#1}\sbseries \check@icl#1\check@icr\expandafter\egroup\fi}
@@ -88,13 +88,13 @@
 \endminipage}\vskip1cm\par\endgroup}
 
 \pagestyle{empty}
-% hehe, low level footline inject
+% hehe, low-level foot-line inject
 \def\@thefoot{%
 \hskip-\uulm@margin\relax% \vskip\uulm@margin\relax
 \fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth\relax{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline\hskip\dimexpr\uulm@margin+.6ex\relax\null}}\relax
 }
 
-% styling of sections, subsections and paragraphs
+% styling of sections, subsections, and paragraphs
 \RequirePackage{titlesec}
 \def\belowsecrule{\titlerule[\columnseprule]}
 \titleformat\section[hang]
@@ -136,7 +136,7 @@
   \DeclareTranslationFallback{t-and}{, and\space}
   \DeclareTranslation{English}{t-and}{, and\space}
   \DeclareTranslation{German}{t-and}{ und\space}
-  % i am a huge fan of inline lists :D
+  % I am a huge fan of inline lists :D
   \newlist{inlist}{enumerate*}{1}
   \setlist[inlist]{%
     itemjoin={{, }},%
@@ -153,7 +153,7 @@
   }
 \fi
 
-% these defaults are arbitrary, and just what i like to use
+% these defaults are arbitrary and just what I like to use
 \if@uulm@cs@poster@default@
   \RequirePackage[T1]{fontenc}
   \RequirePackage[utf8]{inputenc}
@@ -170,8 +170,8 @@
   \RequirePackage{babel}
   \let\finentrypunct\@empty
   \def\uulm@cs@poster@lhook#1{\href{\thefield{url}}{#1}}%
-  % configuring a very short bibtex style,
-  % i am not really happy with it and might change the "look and feel"
+  % configuring a concise bibtex style,
+  % I am not really happy with it and might change the "look and feel."
   \DeclareBibliographyDriver{uulm@cs@poster@bibtheme}{%
     \let\@tmp\@empty
     \ifhyperref{\iffieldundef{url}{}{\let\@tmp\uulm@cs@poster@lhook}}\relax
@@ -207,10 +207,10 @@
 
 % every document needs microtype
 \RequirePackage{microtype}
-% i prefer a little bit more space on posters
+% I prefer a little bit more space on posters
 \linespread{1.1}
 
 % load the uulm and the sp logo using them this way has no direct advantage over
-% using pdfs but this way, it is included in a single file and no blob!
+% using pdfs, but this way, it is included in a single file and no blob!
 \RequirePackage{uulm-logo}
 \endinput
