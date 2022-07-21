@@ -73,12 +73,21 @@
 
 \RequirePackage{titlesec}
 \def\belowsecrule{\titlerule[\columnseprule]}
-\titleformat{\section}
+\titleformat\section[hang]
   {\centering\normalfont\bfseries\Large\color{red}}
   {\thesection}{1em}{}[\color{uulmaccent}\belowsecrule]
-\titleformat{\subsection}
+\titlespacing*\section\z@{*3}{*1}
+
+\titleformat\subsection
   {\normalfont\bfseries\normalsize\color{red}}
-  {\thesection}{1em}{}%[\color{uulmaccent}\belowsecrule]
+  {\thesection}{1em}{}
+\titlespacing*\subsection\z@{*1.5}{*.33}
+
+\titleformat\paragraph[runin]
+  {\normalfont\bfseries\normalsize\color{red}}
+  {\thesection}{1em}{}
+\titlespacing*\paragraph\z@\parskip{1em\@plus.5em\@minus.5em}
+
 \pagestyle{empty}
 
 \RequirePackage{caption}
