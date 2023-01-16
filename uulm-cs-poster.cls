@@ -91,8 +91,9 @@
 % hehe, low-level foot-line inject
 \def\@thefoot{%
 \hskip-\uulm@margin\relax% \vskip\uulm@margin\relax
-\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth\relax{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline\hskip\dimexpr\uulm@margin+.6ex\relax\null}}\relax
+\raisebox{.5pt}{\fcolorbox{red}{red}{\@declaredcolor{white}\hb@xt@\paperwidth\relax{\hskip\dimexpr\uulm@margin-.6ex\relax\strut\@footline\hskip\dimexpr\uulm@margin+.6ex\relax\null}}}\relax
 }
+
 
 % styling of sections, subsections, and paragraphs
 \RequirePackage{titlesec}
