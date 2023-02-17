@@ -66,6 +66,7 @@
 
 % additional registers
 \def\logo#1{\def\@logo{#1}} \let\@logo\@empty
+\def\subtitle#1{\def\@subtitle{#1}} \let\@subtitle\@empty
 \def\institute#1{\def\@institute{#1}} \let\@institute\@empty
 \def\university#1{\def\@university{#1}} \let\@university\@empty
 \def\footline#1{\def\@footline{#1}} \def\@footline{\@date\hfill\@institute\hfill\@university}
@@ -82,8 +83,10 @@
 \fboxsep\z@\fcolorbox{red}{red}{
 \minipage[b]\paperwidth
 \vspace*{.5cm}\@declaredcolor{white}%
-\hspace\uulm@margin\fontsize{36pt}{36pt}\textsc{\textbf{\@title}}\par%
-\hspace\uulm@margin\LARGE\@author\par%
+\hspace\uulm@margin\begin{minipage}{\dimexpr\paperwidth-2\uulm@margin}
+  \fontsize{36pt}{36pt}\textsc{\textbf{\@title}}\par%
+  \LARGE\ifx\@subtitle\@empty\else\@subtitle\hfill\fi\@author\par
+\end{minipage}~%
 \vspace*{.5cm}%
 \endminipage}\vskip1cm\par\endgroup}
 
