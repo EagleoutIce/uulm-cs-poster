@@ -56,8 +56,9 @@
 
 % who wants meta? Let's use Fira (GO, in the future?)!
 \RequirePackage[default]{FiraSans}
-\RequirePackage{FiraMono}
+\RequirePackage[lining]{FiraMono}
 \RequirePackage{sansmathfonts}
+% \RequirePackage{sansmath}
 
 % I find boldface to be too heavy sometimes, therefore:
 % lets have fun with semi-bold!
@@ -85,7 +86,7 @@
 \vspace*{.5cm}\@declaredcolor{white}%
 \hspace\uulm@margin\begin{minipage}{\dimexpr\paperwidth-2\uulm@margin}
   \fontsize{36pt}{36pt}\textsc{\textbf{\@title}}\par%
-  \LARGE\ifx\@subtitle\@empty\else\@subtitle\hfill\fi\@author\par
+  \LARGE\ifx\@subtitle\@empty\else\kern1.33pt\@subtitle\hfill\fi\@author\par
 \end{minipage}~%
 \vspace*{.5cm}%
 \endminipage}\vskip1cm\par\endgroup}
